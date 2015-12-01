@@ -1,0 +1,18 @@
+%h1 Source "#{@source.key}"
+
+%dl
+  %dt Description
+  %dd
+    - if @source.description.blank?
+      %i (none)
+    - else
+      = @source.description
+
+  %dt URL
+  %dd
+    - if @source.url.blank?
+      %i (none)
+    - else
+      = link_to(@source.url, @source.url)
+
+= link_to "Edit", edit_source_path(@source)

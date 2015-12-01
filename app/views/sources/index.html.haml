@@ -1,0 +1,7 @@
+%h1 Sources (#{@sources.size})
+
+%ul
+  - @sources.each do |source|
+    %li= link_to "#{source.key} (#{source.authority})", source_path(source)
+
+  %li= link_to "(Add new)", new_source_path

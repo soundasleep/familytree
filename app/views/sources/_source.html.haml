@@ -1,0 +1,35 @@
+%table
+  %tbody
+    %tr
+      %th
+        = f.label(:key)
+      %td
+        = f.text_field(:key)
+    %tr
+      %th
+        = f.label(:description)
+      %td
+        = f.text_area(:description)
+        %i (optional)
+    %tr
+      %th
+        = f.label(:url)
+      %td
+        = f.text_field(:url)
+        %i (optional)
+    %tr
+      %th
+        = f.label(:authority)
+      %td
+        = f.text_field(:authority)
+        %i (higher is more important)
+
+        - if Source.any?
+          %i (currently ranges from #{Source.minimum(:authority)} to #{Source.maximum(:authority)})
+        - else
+          %i (there are no sources yet)
+
+  %tfoot
+    %tr
+      %td.buttons{colspan: 2}
+        = submit_tag "Save"

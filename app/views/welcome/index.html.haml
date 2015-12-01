@@ -1,0 +1,17 @@
+%h1 Welcome to your family tree
+
+%h2 People (#{@people.size})
+
+%ul
+  - @people.each do |person|
+    %li= link_to person.name, person_path(person)
+
+  %li= link_to "Add new person", new_person_path
+
+%h2 Sources (#{@sources.size})
+
+%ul
+  - @sources.each do |source|
+    %li= link_to "#{source.key} (#{source.authority})", source_path(source)
+
+  %li= link_to "Add new source", new_source_path
