@@ -4,6 +4,11 @@
 
 = render partial: "person", locals: { person: @person }
 
+- if @person.homepage
+  = link_to "Remove #{@person.name} from homepage", person_toggle_homepage_path(@person), method: :post
+- else
+  = link_to "Feature #{@person.name} on homepage", person_toggle_homepage_path(@person), method: :post
+
 %h2 Highest authority facts
 
 %table

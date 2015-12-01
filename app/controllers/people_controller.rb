@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   def show
-    @person = Person.find(params[:id])
+    @person = find_person
   end
 
   def new
@@ -21,9 +21,19 @@ class PeopleController < ApplicationController
     redirect_to person_path(person)
   end
 
+  def toggle_homepage
+    person = find_person
+    person.update!(homepage: !person.homepage)
+    redirect_to person_path(person)
+  end
+
   private
 
   def default_person
     { homepage: false }
+  end
+
+  def find_person
+    Person.find(params[:id] || params[:person_id])
   end
 end

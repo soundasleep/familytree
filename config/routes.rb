@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  resources :people
+  resources :people do
+    post :toggle_homepage
+  end
   resources :sources
 
   # Example of regular route:
