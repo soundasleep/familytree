@@ -4,7 +4,10 @@
 
 %ul
   - @people.each do |person|
-    %li= link_to person.name, person_path(person)
+    %li
+      = link_to person.name, person_path(person)
+      - if person.homepage
+        (featured)
 
   %li= link_to "Add new person", new_person_path
 
@@ -12,6 +15,8 @@
 
 %ul
   - @sources.each do |source|
-    %li= link_to "#{source.key} (#{source.authority})", source_path(source)
+    %li
+      = link_to source.select_text, source_path(source)
+      (authority #{source.authority})
 
   %li= link_to "Add new source", new_source_path

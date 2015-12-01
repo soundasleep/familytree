@@ -1,6 +1,18 @@
 class WelcomeController < ApplicationController
   def index
-    @people = Person.where(homepage: true).sample(20)
-    @sources = Source.order(:authority).first(10)
+    @people = (homepage_people + random_people).uniq.sort_by(&:name)
+    @sources = Source.order('authority desc').first(10)
+  end
+
+  private
+
+  def homepage_people
+    Person.where(homepage: true)
+  end
+
+  def random_people
+    10.times.map do |_|
+      Person.offset(rand(Person.count)).first
+    end
   end
 end

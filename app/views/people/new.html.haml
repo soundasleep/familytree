@@ -1,0 +1,24 @@
+%h1 Create new person
+
+%p
+  A person needs at least a name to get started, then new facts can be added
+  to the person.
+
+= form_for @person do |f|
+  %table
+    %tbody
+      %tr
+        %th
+          = label_tag(:name)
+        %td
+          = text_field_tag(:name)
+      %tr
+        %th
+          = label_tag(:source)
+        %td
+          = render partial: "facts/select", locals: { f: f }
+
+    %tfoot
+      %tr
+        %td.buttons{colspan: 2}
+          = submit_tag "Save"
