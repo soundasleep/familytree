@@ -1,2 +1,5 @@
 .infobox
-  %b= person.name
+  %b
+    = link_to person.name, person_path(person)
+  - if person.homepage
+    (featured)

@@ -1,0 +1,32 @@
+= form_for(fact) do |f|
+  = hidden_field_tag(:person_id, fact.person.id) if fact.person
+
+  %table
+    %tbody
+      %tr
+        %th
+          = f.label(:key)
+        %td
+          = f.text_field(:key)
+          %i (TODO add a dropdown of supported fields)
+      %tr
+        %th
+          = f.label(:value)
+        %td
+          = f.text_field(:value)
+      %tr
+        %th
+          = f.label(:notes)
+        %td
+          = f.text_area(:notes)
+          %i (optional)
+      %tr
+        %th
+          = label_tag(:source)
+        %td
+          = render partial: "facts/select", locals: { fact: fact }
+
+    %tfoot
+      %tr
+        %td.buttons{colspan: 2}
+          = submit_tag "Save"

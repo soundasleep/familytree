@@ -18,6 +18,7 @@
       %th Key
       %th Value
       %th Source
+      %th
 
   %tbody
     - @person.top_facts.each do |fact|
@@ -26,6 +27,11 @@
         %td= fact.key
         %td= fact.value
         %td= link_to fact.source.key, source_path(fact.source)
+        %td= link_to "delete", fact_path(fact), method: :delete
+
+%h2 Add fact
+
+= render partial: "facts/edit", locals: { fact: Fact.new(person: @person) }
 
 %h2 All facts
 
@@ -44,3 +50,4 @@
         %td= fact.key
         %td= fact.value
         %td= link_to fact.source.key, source_path(fact.source)
+        %td= link_to "delete", fact_path(fact), method: :delete

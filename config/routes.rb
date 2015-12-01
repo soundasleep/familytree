@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   resources :people do
     post :toggle_homepage
   end
+
   resources :sources
+
+  resources :facts
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

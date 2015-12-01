@@ -5,9 +5,7 @@
 %ul
   - @people.each do |person|
     %li
-      = link_to person.name, person_path(person)
-      - if person.homepage
-        (featured)
+      = render partial: "people/person", locals: { person: person }
 
   %li= link_to "Add new person", new_person_path
 
