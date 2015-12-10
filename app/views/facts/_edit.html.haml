@@ -7,8 +7,7 @@
         %th
           = f.label(:key)
         %td
-          = f.text_field(:key)
-          %i (TODO add a dropdown of supported fields)
+          = f.select :key, all_person_fact_keys
       %tr
         %th
           = f.label(:value)

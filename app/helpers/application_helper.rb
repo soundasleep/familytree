@@ -12,4 +12,14 @@ module ApplicationHelper
       [ source.select_text, source.id ]
     end
   end
+
+  def all_person_fact_keys
+    options_for_select all_fact_keys_as_pairs
+  end
+
+  def all_fact_keys_as_pairs
+    Person.fact_keys.map do |k|
+      [ k.to_s.humanize, k.to_s ]
+    end
+  end
 end

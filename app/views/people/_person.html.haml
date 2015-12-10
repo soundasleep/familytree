@@ -1,5 +1,24 @@
 .infobox
-  %b
-    = link_to person.name, person_path(person)
-  - if person.homepage
-    (featured)
+  %div
+    %b
+      = link_to person.name, person_path(person)
+    - if person.homepage
+      (featured)
+
+  - if person.date_of_birth.present? || person.place_of_birth.present?
+    %div
+      Born
+      - if person.date_of_birth.present?
+        = person.date_of_birth
+      - if person.place_of_birth.present?
+        in
+        = person.place_of_birth
+
+  - if person.date_of_death.present? || person.place_of_death.present?
+    %div
+      Died
+      - if person.date_of_death.present?
+        = person.date_of_death
+      - if person.place_of_death.present?
+        in
+        = person.place_of_death
